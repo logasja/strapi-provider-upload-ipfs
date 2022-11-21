@@ -1,23 +1,21 @@
 {
-  "name": "strapi-provider-upload-ipfs-storage",
+  "name": "strapi-provider-upload-ipfs",
   "version": "1.0.2",
   "description": "IPFS provider for strapi upload",
+  "type": "module",
   "keywords": [
     "upload",
     "ipfs",
     "web3",
-    "filebase",
-    "pinata",
-    "fleek",
     "strapi"
   ],
-  "homepage": "https://github.com/alexbakers/strapi-provider-upload-ipfs-storage",
+  "homepage": "https://github.com/logasja/strapi-provider-upload-ipfs",
   "bugs": {
-    "url": "https://github.com/alexbakers/strapi-provider-upload-ipfs-storage/issues"
+    "url": "https://github.com/logasja/strapi-provider-upload-ipfs/issues"
   },
   "repository": {
     "type": "git",
-    "url": "git://github.com/alexbakers/strapi-provider-upload-ipfs-storage.git"
+    "url": "git://github.com/logasja/strapi-provider-upload-ipfs.git"
   },
   "license": "MIT",
   "main": "./lib/index.js",
@@ -27,11 +25,14 @@
   "scripts": {
     "test": "node ./test/index.test.js"
   },
-  "dependencies": {
-    "ipfs-storage": "^1.1.5"
-  },
   "engines": {
     "node": ">=14.19.1 <=18.x.x",
     "npm": ">=6.0.0"
+  },
+  "dependencies": {
+    "ipfs-client": "^0.9.2"
+  },
+  "devDependencies": {
+    "dotenv": "^16.0.3"
   }
 }
