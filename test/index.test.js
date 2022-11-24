@@ -1,15 +1,10 @@
-import * as fs from "fs";
-import { join, dirname } from "path";
-import { create } from 'ipfs-client';
+const fs = require('fs');
+const { join } = require('path');
 
-import { fileURLToPath } from 'url';
-
-const __dirname = dirname(fileURLToPath(import.meta.url));
-
-import * as dotenv from 'dotenv';
-dotenv.config();
+require("dotenv").config();
 
 fs.readFile(join(__dirname, "..", "public", "banner.png"), async (err, data) => {
+  const ipfs = await import('ipfs-client');
   if (err) {
     console.log("🆘 ERROR:", err);
     return;
@@ -17,16 +12,18 @@ fs.readFile(join(__dirname, "..", "public", "banner.png"), async (err, data) => 
 
   if (
     !process.env.IPFS_GRPC &&
-    !process.env.IPFS_HTTP 
+    !process.env.IPFS_API_HTTP 
   ) {
     console.log("🆘 ERROR:", "Create .env file");
     return;
   }
 
-  const client = create({
+  const client = ipfs.create({
     grpc: process.env.IPFS_GRPC,
-    http: process.env.IPFS_HTTP
+    http: process.env.IPFS_API_HTTP
   });
+
+  console.log(client);
 
   try {
     const ipfs_status = await client.add(

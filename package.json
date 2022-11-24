@@ -2,7 +2,6 @@
   "name": "strapi-provider-upload-ipfs",
   "version": "1.0.2",
   "description": "IPFS provider for strapi upload",
-  "type": "module",
   "keywords": [
     "upload",
     "ipfs",

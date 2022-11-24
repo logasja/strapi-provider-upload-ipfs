@@ -97,5 +97,7 @@ package-lock.json
 yarn.lock
 
 .env
+.env.example
+.nvmrc
 .txt
 public
