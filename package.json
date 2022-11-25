@@ -1,5 +1,5 @@
 {
-  "name": "strapi-provider-upload-ipfs",
+  "name": "strapi-provider-upload-ipfs-client",
   "version": "1.0.2",
   "description": "IPFS provider for strapi upload",
   "keywords": [
