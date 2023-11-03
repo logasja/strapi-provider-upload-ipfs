@@ -1,12 +1,13 @@
 {
   "name": "strapi-provider-upload-ipfs-client",
-  "version": "1.0.2",
+  "version": "1.2.0",
   "description": "IPFS provider for strapi upload",
   "keywords": [
     "upload",
     "ipfs",
     "web3",
-    "strapi"
+    "strapi",
+    "local"
   ],
   "homepage": "https://github.com/logasja/strapi-provider-upload-ipfs",
   "bugs": {
@@ -25,13 +26,16 @@
     "test": "node ./test/index.test.js"
   },
   "engines": {
-    "node": ">=14.19.1 <=18.x.x",
-    "npm": ">=6.0.0"
-  },
-  "dependencies": {
-    "ipfs-client": "^0.9.2"
+    "node": ">=16.x.x <=20.9.x",
+    "npm": ">=9.0.0"
   },
   "devDependencies": {
     "dotenv": "^16.0.3"
+  },
+  "peerDependencies": {
+    "@strapi/strapi": "^4.15.0"
+  },
+  "dependencies": {
+    "kubo-rpc-client": "^3.0.1"
   }
 }

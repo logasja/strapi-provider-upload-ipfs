@@ -4,7 +4,7 @@ const { join } = require('path');
 require("dotenv").config();
 
 fs.readFile(join(__dirname, "..", "public", "banner.png"), async (err, data) => {
-  const ipfs = await import('ipfs-client');
+  const ipfs = await import('kubo-rpc-client');
   if (err) {
     console.log("🆘 ERROR:", err);
     return;
