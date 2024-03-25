@@ -26,16 +26,16 @@
     "test": "node ./test/index.test.js"
   },
   "engines": {
-    "node": ">=16.x.x <=20.9.x",
-    "npm": ">=9.0.0"
+    "node": ">=20.11.1",
+    "npm": ">=10.2.4"
   },
   "devDependencies": {
-    "dotenv": "^16.0.3"
+    "dotenv": "^16.4.5"
   },
   "peerDependencies": {
     "@strapi/strapi": "^4.15.0"
   },
   "dependencies": {
-    "kubo-rpc-client": "^3.0.1"
+    "kubo-rpc-client": "^3.0.4"
   }
 }
