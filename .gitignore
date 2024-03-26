@@ -59,7 +59,6 @@ $RECYCLE.BIN/
 *.swm
 *.out
 *.pid
-*.lock
 
 
 ############################
@@ -94,6 +93,3 @@ build
 node_modules
 .node_history
 package-lock.json
-.env
-yarn.lock
-.txt

@@ -18,19 +18,35 @@
     "url": "git://github.com/logasja/strapi-provider-upload-ipfs.git"
   },
   "license": "MIT",
-  "main": "./lib/index.js",
-  "directories": {
-    "lib": "./lib"
-  },
+  "main": "./dist/index.js",
+  "module": "./dist/index.mjs",
+  "source": "./src/index.ts",
+  "types": "./dist/index.d.ts",
   "scripts": {
-    "test": "node ./test/index.test.js"
+    "build": "pack-up build",
+    "clean": "rimraf ./dist",
+    "lint": "eslint --ext .ts src/",
+    "watch": "pack-up watch",
+    "test:unit": "run -T jest",
+    "test:unit:watch": "run -T jest --watch"
   },
   "engines": {
     "node": ">=20.11.1",
     "npm": ">=10.2.4"
   },
   "devDependencies": {
-    "dotenv": "^16.4.5"
+    "@strapi/pack-up": "4.21.0",
+    "@tsconfig/recommended": "^1.0.4",
+    "@types/jest": "29.5.2",
+    "@typescript-eslint/eslint-plugin": "^6.21.0",
+    "dotenv": "^16.4.5",
+    "eslint": "^8.57.0",
+    "eslint-config-standard-with-typescript": "^43.0.1",
+    "eslint-plugin-import": "^2.29.1",
+    "eslint-plugin-n": "^16.6.2",
+    "eslint-plugin-promise": "^6.1.1",
+    "helia": "^4.1.0",
+    "typescript": "^5.4.3"
   },
   "peerDependencies": {
     "@strapi/strapi": "^4.15.0"
