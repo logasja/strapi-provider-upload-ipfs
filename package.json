@@ -1,41 +1,78 @@
 {
-  "name": "strapi-provider-upload-ipfs-client",
-  "version": "1.2.0",
-  "description": "IPFS provider for strapi upload",
-  "keywords": [
-    "upload",
-    "ipfs",
-    "web3",
-    "strapi",
-    "local"
-  ],
-  "homepage": "https://github.com/logasja/strapi-provider-upload-ipfs",
+  "name": "strapi-provider-upload-ipfs",
+  "version": "0.0.0",
+  "description": "Allows user to upload content directly to a running IPFS node",
+  "keywords": [],
+  "homepage": "https://github.com/logasja/strapi-provider-upload-ipfs#readme",
   "bugs": {
     "url": "https://github.com/logasja/strapi-provider-upload-ipfs/issues"
   },
   "repository": {
     "type": "git",
-    "url": "git://github.com/logasja/strapi-provider-upload-ipfs.git"
+    "url": "git+ssh://git@github.com/logasja/strapi-provider-upload-ipfs.git"
   },
   "license": "MIT",
-  "main": "./lib/index.js",
-  "directories": {
-    "lib": "./lib"
+  "author": "Jacob Logas <logasja@gatech.edu>",
+  "type": "commonjs",
+  "exports": {
+    "./package.json": "./package.json",
+    "./strapi-admin": {
+      "types": "./dist/admin/src/index.d.ts",
+      "source": "./admin/src/index.ts",
+      "import": "./dist/admin/index.mjs",
+      "require": "./dist/admin/index.js",
+      "default": "./dist/admin/index.js"
+    },
+    "./strapi-server": {
+      "types": "./dist/server/src/index.d.ts",
+      "source": "./server/src/index.ts",
+      "import": "./dist/server/index.mjs",
+      "require": "./dist/server/index.js",
+      "default": "./dist/server/index.js"
+    }
   },
+  "files": [
+    "dist",
+    "./strapi-server.js"
+  ],
   "scripts": {
-    "test": "node ./test/index.test.js"
-  },
-  "engines": {
-    "node": ">=20.11.1",
-    "npm": ">=10.2.4"
-  },
-  "devDependencies": {
-    "dotenv": "^16.4.5"
-  },
-  "peerDependencies": {
-    "@strapi/strapi": "^4.15.0"
+    "build": "strapi plugin:build",
+    "test:ts:back": "run -T tsc -p server/tsconfig.json",
+    "test:ts:front": "run -T tsc -p admin/tsconfig.json",
+    "verify": "strapi plugin:verify",
+    "watch": "strapi plugin:watch",
+    "watch:link": "strapi plugin:watch:link"
   },
   "dependencies": {
-    "kubo-rpc-client": "^3.0.4"
+    "@strapi/design-system": "^1.16.0",
+    "@strapi/helper-plugin": "^4.21.0",
+    "@strapi/icons": "^1.16.0"
+  },
+  "devDependencies": {
+    "@strapi/strapi": "^4.21.0",
+    "@strapi/typescript-utils": "^4.21.0",
+    "@types/react": "^18.2.72",
+    "@types/react-dom": "^18.2.22",
+    "@types/react-router-dom": "^5.3.3",
+    "@types/styled-components": "^5.1.26",
+    "prettier": "^3.2.5",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-router-dom": "^5.3.4",
+    "styled-components": "^5.3.3",
+    "typescript": "^5.4.3"
+  },
+  "peerDependencies": {
+    "@strapi/strapi": "^4.21.0",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-router-dom": "^5.2.0",
+    "styled-components": "^5.2.1"
+  },
+  "strapi": {
+    "kind": "plugin",
+    "name": "strapi-provider-upload-ipfs",
+    "displayName": "Upload IPFS",
+    "description": "Allows user to upload content directly to a running IPFS node"
   }
 }
