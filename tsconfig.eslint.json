@@ -1,8 +1,4 @@
 {
-  "extends": "./tsconfig.json",
-  "compilerOptions": {
-    "noEmit": true
-  },
-  "include": ["src", "packup.config.ts"],
-  "exclude": ["node_modules"]
+  "extends": "./tsconfig",
+  "include": ["src", "*.ts", "*.js"]
 }

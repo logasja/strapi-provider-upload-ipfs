@@ -1,14 +1,21 @@
 {
-  "$schema": "http://json.schemastore.org/tsconfig",
-  "extends": "@tsconfig/recommended/tsconfig.json",
+  "include": ["src"],
+  "exclude": ["**/*.test.ts"],
   "compilerOptions": {
+    "composite": false,
     "declaration": true,
     "declarationMap": true,
     "esModuleInterop": true,
-    "sourceMap": true,
-    "resolveJsonModule": true,
-    "noImplicitThis": true
-  },
-  "include": ["src"],
-  "exclude": ["node_modules"]
+    "forceConsistentCasingInFileNames": true,
+    "inlineSources": false,
+    "isolatedModules": true,
+    "moduleResolution": "Bundler",
+    "module": "ESNext",
+    "noEmit": true,
+    "noUnusedLocals": false,
+    "noUnusedParameters": false,
+    "preserveWatchOutput": true,
+    "skipLibCheck": true,
+    "strict": true
+  }
 }

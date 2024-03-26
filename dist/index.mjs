@@ -4,6 +4,7 @@ let client;
 const index = {
   init({ gatewayUrl, clientOptions }) {
     client = create(clientOptions);
+    console.debug(client);
     const upload = async (file) => {
       const ipfsStatus = await client.add({
         path: file.name,

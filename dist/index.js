@@ -5,6 +5,7 @@ let client;
 const index = {
   init({ gatewayUrl, clientOptions }) {
     client = kuboRpcClient.create(clientOptions);
+    console.debug(client);
     const upload = async (file) => {
       const ipfsStatus = await client.add({
         path: file.name,
