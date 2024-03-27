@@ -7,7 +7,7 @@
 // Public node modules.
 import type { ReadStream } from 'node:fs';
 import { join } from 'path';
-import { type IPFSHTTPClient, create, type Options, type CID } from 'kubo-rpc-client';
+import { type IPFSHTTPClient, type Options, type CID } from 'kubo-rpc-client';
 
 export interface File {
   name: string;
@@ -30,18 +30,20 @@ export interface File {
   buffer?: Buffer;
 }
 
-let client: IPFSHTTPClient;
-
 export interface InitOptions {
   clientOptions?: Options;
   gatewayUrl?: string;
 }
 
+var client: IPFSHTTPClient;
+
 export default {
   init({ gatewayUrl, clientOptions }: InitOptions) {
-    client = create(clientOptions);
+    import('kubo-rpc-client').then(({create}) => {
+      client = create(clientOptions);
 
-    console.debug(client);
+      console.debug(client);
+    });
 
     const upload = async (file: File): Promise<void> => {
       const ipfsStatus = await client.add({
@@ -50,14 +52,26 @@ export default {
       });
       console.log('IPFS Status', ipfsStatus);
       file.url = join(String(gatewayUrl), String(ipfsStatus.cid));
+      console.log("Added:", file.url);
     };
+
 
     return {
       async uploadStream(file: File) {
-        await upload(file);
+        try {
+          await upload(file);            
+        } catch (error) {
+          console.error(error);
+          console.error(clientOptions);
+        }
       },
       async upload(file: File) {
-        await upload(file);
+        try {
+          await upload(file);            
+        } catch (error) {
+          console.error(error);
+          console.error(clientOptions);
+        }
       },
       async delete(file: File) {
         const command = async (file: File): Promise<CID> => {
